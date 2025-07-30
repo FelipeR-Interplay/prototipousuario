@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/prototipousuario/static/css/main.fd8d8e81.css",
+    "main.js": "/prototipousuario/static/js/main.df7abedf.js",
+    "static/media/lempidominadas.gif": "/prototipousuario/static/media/lempidominadas.fee7941b42739db1b248.gif",
+    "index.html": "/prototipousuario/index.html",
+    "main.fd8d8e81.css.map": "/prototipousuario/static/css/main.fd8d8e81.css.map",
+    "main.df7abedf.js.map": "/prototipousuario/static/js/main.df7abedf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fd8d8e81.css",
+    "static/js/main.df7abedf.js"
+  ]
+}
