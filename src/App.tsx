@@ -1,12 +1,8 @@
 import React from 'react';
-import PerfilUsuario from './PerfilUsuario.tsx';
+import PerfilUsuario from './PerfilUsuario';
 
 function App() {
-  return (
-    <div className="App">
-      <PerfilUsuario />
-    </div>
-  );
+  return <PerfilUsuario />;
 }
 
 export default App; 
