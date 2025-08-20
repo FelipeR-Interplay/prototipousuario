@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/prototipousuario/static/css/main.3c7e7ef3.css",
-    "main.js": "/prototipousuario/static/js/main.b2bdc179.js",
+    "main.css": "/prototipousuario/static/css/main.7731db64.css",
+    "main.js": "/prototipousuario/static/js/main.0d64f71d.js",
+    "static/media/intervsmilan.png": "/prototipousuario/static/media/intervsmilan.301b24fbdd85cbd99bbc.png",
     "static/media/lempidominadas.webm": "/prototipousuario/static/media/lempidominadas.0cb001261eb2130d260a.webm",
     "static/media/bg-01-profile.webp": "/prototipousuario/static/media/bg-01-profile.4d4e539e159fbdb89239.webp",
     "static/media/historial.webp": "/prototipousuario/static/media/historial.740e129debafd4d1b434.webp",
@@ -17,11 +18,11 @@
     "static/media/espada.webp": "/prototipousuario/static/media/espada.73c36e580b967e1ef563.webp",
     "index.html": "/prototipousuario/index.html",
     "static/media/calendar.webp": "/prototipousuario/static/media/calendar.25c4a952d793b71baefc.webp",
-    "main.3c7e7ef3.css.map": "/prototipousuario/static/css/main.3c7e7ef3.css.map",
-    "main.b2bdc179.js.map": "/prototipousuario/static/js/main.b2bdc179.js.map"
+    "main.7731db64.css.map": "/prototipousuario/static/css/main.7731db64.css.map",
+    "main.0d64f71d.js.map": "/prototipousuario/static/js/main.0d64f71d.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c7e7ef3.css",
-    "static/js/main.b2bdc179.js"
+    "static/css/main.7731db64.css",
+    "static/js/main.0d64f71d.js"
   ]
 }
