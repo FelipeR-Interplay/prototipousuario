@@ -3,7 +3,7 @@ import lempiVideo from '../../images/lempidominadas.webm';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-[#11181C]/20 backdrop-blur-sm text-center py-4 relative overflow-hidden">
+    <footer className="w-full bg-[#11181C]/05  text-center py-4 relative overflow-hidden">
       {/* Clip-path background */}
       <div 
         className="absolute inset-0 opacity-10"

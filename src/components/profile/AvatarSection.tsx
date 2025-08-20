@@ -13,51 +13,54 @@ interface AvatarSectionProps {
 }
 
 const AvatarSection: React.FC<AvatarSectionProps> = ({ userInfo, nivel, puntos, nivelActual, puntosRequeridos }) => {
-  // Calcular progreso para la barra
   const progreso = Math.min((puntos / puntosRequeridos) * 100, 100);
-  
+
   return (
-    <div className="bg-[#1E2930] rounded-xl p-4 border border-[#1a1a2e] shadow-lg">
-      <div className="flex items-center space-x-4">
-        <div className="w-16 h-16 relative flex-shrink-0 overflow-hidden">
-          <div className="w-full h-full rounded-full shadow-lg bg-[#00B7E3] flex items-center justify-center">
-            <img src={avatarImage} alt="Avatar" className="w-12 h-12 object-cover rounded-full" />
-          </div>
-          <img 
-            src={avatarMarco} 
-            alt="Marco" 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 object-contain pointer-events-none" 
+    <section className="rounded-2xl p-0 text-center bg-transparent">
+      {/* Wrapper del tamaño del marco (sin recortes) */}
+      <div className="relative mx-auto w-32 h-32 overflow-visible select-none">
+        {/* Marco/laurel que RODEA al avatar */}
+        <img
+          src={avatarMarco}
+          alt="Marco"
+          className="absolute inset-0 w-full h-full object-contain z-20 pointer-events-none"
+        />
+
+        {/* Halo azul claro y avatar centrados dentro */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-gradient-to-b from-[#73FFFF] to-[#00B7E3] opacity-70 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(0,183,227,0.25)]">
+          <img
+            src={avatarImage}
+            alt="Avatar"
+            className="w-20 h-20 rounded-full object-cover z-30"
           />
         </div>
-        <div className="flex-1">
-          <h2 className="font-medium text-xs text-white font-['Poppins']">{userInfo.nombre} {userInfo.apellido}</h2>
-          
-          {/* VIP Classification Section */}
-          <div className="mt-2">
-            <div className="flex items-center space-x-2 mb-2">
-              <Star className="w-4 h-4 text-yellow-400 fill-current" />
-              <span className="text-sm font-bold text-white">VIP PRO (XP)</span>
-            </div>
-            
-            {/* Progress Bar Container */}
-            <div className="bg-[#0d1117] rounded-lg p-2">
-              <div className="w-full bg-gray-700 rounded-full h-2 mb-1">
-                <div 
-                  className="bg-gradient-to-r from-[#00B7E3] to-[#46FC6D] h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${progreso}%` }}
-                ></div>
-              </div>
-              
-              {/* Progress Numbers */}
-              <div className="flex justify-between text-xs text-gray-400">
-                <span>{puntos.toLocaleString()}</span>
-                <span>{puntosRequeridos.toLocaleString()}</span>
-              </div>
-            </div>
-          </div>
+      </div>
+
+      {/* Nombre */}
+      <h2 className="mt-3 text-white font-extrabold text-lg leading-tight">
+        {userInfo.nombre} {userInfo.apellido}
+      </h2>
+
+      {/* Se elimina clasificación aquí; solo se muestra en el contenedor translúcido */}
+
+      {/* Barra de estatus VIP (según referencia) */}
+      <div className="mt-3 mx-auto w-full max-w-[360px] bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-3">
+        <div className="flex items-center gap-2 text-white mb-2">
+          <Star className="w-4 h-4 text-yellow-400 fill-current" />
+          <span className="text-sm font-extrabold tracking-wide">VIP PRO (XP)</span>
+        </div>
+        <div className="relative h-3 rounded-full overflow-hidden bg-white/90">
+          <div
+            className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#00B7E3] via-[#28D7D7] to-[#46FC6D]"
+            style={{ width: `${progreso}%` }}
+          />
+        </div>
+        <div className="flex justify-between text-xs text-white/90 mt-2">
+          <span>{puntos.toLocaleString()}</span>
+          <span>{puntosRequeridos.toLocaleString()}</span>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

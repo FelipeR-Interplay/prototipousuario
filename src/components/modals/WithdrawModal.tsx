@@ -22,7 +22,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ isOpen, onClose, onWithdr
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-[#1E2930] rounded-2xl p-6 w-full max-w-sm border border-[#0d1117]">
+      <div className="bg-[#1E2930] rounded-2xl p-6 w-full max-w-sm">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-extrabold text-lg text-white uppercase">💸 RETIRAR FONDOS</h3>
           <button onClick={onClose} className="text-gray-400 hover:text-white">✕</button>

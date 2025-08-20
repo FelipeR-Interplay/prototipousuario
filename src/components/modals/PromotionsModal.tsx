@@ -11,7 +11,7 @@ const PromotionsModal: React.FC<PromotionsModalProps> = ({ isOpen, onClose }) =>
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/50">
-      <div className="w-full max-w-2xl md:max-w-4xl bg-[#1E2930] rounded-2xl border border-[#0d1117] p-5 md:p-8">
+      <div className="w-full max-w-2xl md:max-w-4xl bg-[#1E2930] rounded-2xl p-5 md:p-8">
         <div className="flex items-center justify-between mb-4 md:mb-6">
           <h3 className="text-white font-extrabold uppercase text-base md:text-lg flex items-center gap-2">
             <Megaphone className="w-5 h-5 text-[#00B7E3]" />

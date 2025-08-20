@@ -40,7 +40,7 @@ const VIPSummaryModal: React.FC<VIPSummaryModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-[#1E2930] rounded-2xl p-6 w-full max-w-md border border-[#0d1117] max-h-[90vh] overflow-y-auto">
+      <div className="bg-[#1E2930] rounded-2xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-extrabold text-lg text-white uppercase flex items-center">
             <Crown className="mr-2 w-5 h-5 text-yellow-400" />

@@ -35,15 +35,9 @@ import SettingsModal from './components/modals/SettingsModal';
 import ReferralsCard from './components/referrals/ReferralsCard';
 
 // Animated Background Component
-const AnimatedBackground: React.FC = () => {
-  return (
-    <div className="animated-background">
-      <div className="blob blob-1"></div>
-      <div className="blob blob-2"></div>
-      <div className="blob blob-3"></div>
-    </div>
-  );
-};
+import AnimatedBackground from './components/AnimatedBackground';
+import MarqueeBar from './components/MarqueeBar';
+import SportsCalendar from './components/sports/SportsCalendar';
 
 const PerfilUsuario: React.FC = () => {
   const [subView, setSubView] = useState<SubViewType>('main');
@@ -189,8 +183,14 @@ const PerfilUsuario: React.FC = () => {
       <div className="max-w-7xl mx-auto p-4 relative z-10">
         <Header 
           title="Mi Perfil" 
-          onBack={() => {}} 
-          showBackButton={false}
+          onBack={() => {
+            if (subView !== 'main') {
+              setSubView('main');
+            } else if (typeof window !== 'undefined' && window.history.length > 1) {
+              window.history.back();
+            }
+          }} 
+          showBackButton={true}
         />
 
         <main className="masonry-layout max-w-7xl mx-auto">
@@ -236,6 +236,11 @@ const PerfilUsuario: React.FC = () => {
               {/* Personal Info Section */}
               <div className="masonry-item">
                 <PersonalInfoSection userInfo={userInfo} onEditInfo={handleEditInfo} />
+              </div>
+
+              {/* Calendario Deportivo */}
+              <div className="masonry-item">
+                <SportsCalendar />
               </div>
 
               {/* Referidos (tarjeta incrustada) */}
@@ -284,6 +289,8 @@ const PerfilUsuario: React.FC = () => {
             </div>
           )}
         </main>
+
+        <MarqueeBar />
         
         <Footer />
       </div>

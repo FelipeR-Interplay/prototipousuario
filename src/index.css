@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,12 +44,48 @@
     pointer-events: none;
   }
 
+  /* Stadium top image layer */
+  .hero-image-bg {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 50vh;
+    max-height: 520px;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    opacity: 0.4; /* ~40% at top */
+    z-index: 1;
+    /* Fade out to bottom using mask gradient */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0) 100%);
+  }
+
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    flex: 1 1 auto;
+    white-space: nowrap;
+  }
+  .marquee-content {
+    display: inline-block;
+    padding-left: 2rem;
+    animation: marquee var(--marquee-duration, 25000ms) linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
   .blob {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
     will-change: transform, opacity;
-    opacity: 0.4;
+    opacity: 0.3;
+    z-index: 0;
   }
 
   .blob-1 {
@@ -81,87 +116,130 @@
   }
 
   @keyframes float1 {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-      opacity: 0.4;
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    25% { transform: translate(50px, 30px) scale(1.1); opacity: 0.6; }
+    50% { transform: translate(20px, 60px) scale(0.9); opacity: 0.3; }
+    75% { transform: translate(-30px, 20px) scale(1.05); opacity: 0.5; }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    33% { transform: translate(-40px, -20px) scale(1.15); opacity: 0.6; }
+    66% { transform: translate(30px, -40px) scale(0.85); opacity: 0.2; }
+  }
+  @keyframes float3 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    20% { transform: translate(60px, -30px) scale(1.2); opacity: 0.6; }
+    40% { transform: translate(20px, 40px) scale(0.8); opacity: 0.2; }
+    60% { transform: translate(-40px, 20px) scale(1.1); opacity: 0.5; }
+    80% { transform: translate(-20px, -50px) scale(0.9); opacity: 0.3; }
+  }
+
+  /* Animaciones para eventos del calendario */
+  @keyframes slide-in-from-right {
+    0% {
+      transform: translateX(20px);
+      opacity: 0;
     }
-    25% {
-      transform: translate(50px, 30px) scale(1.1);
-      opacity: 0.6;
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .animate-in {
+    animation: slide-in-from-right 0.4s ease-out forwards, fade-in 0.4s ease-out forwards;
+  }
+
+  .slide-in-from-right-5 {
+    animation: slide-in-from-right 0.4s ease-out forwards;
+  }
+
+  .fade-in-0 {
+    animation: fade-in 0.4s ease-out forwards;
+  }
+
+  /* Animación de transformación del selector de días */
+  @keyframes morph-indicator {
+    0% {
+      transform: scale(1) translateZ(0);
+      border-radius: 24px;
     }
     50% {
-      transform: translate(20px, 60px) scale(0.9);
-      opacity: 0.3;
+      transform: scale(0.7) translateZ(0);
+      border-radius: 50%;
     }
-    75% {
-      transform: translate(-30px, 20px) scale(1.05);
-      opacity: 0.5;
-    }
-  }
-
-  @keyframes float2 {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-      opacity: 0.4;
-    }
-    33% {
-      transform: translate(-40px, -20px) scale(1.15);
-      opacity: 0.6;
-    }
-    66% {
-      transform: translate(30px, -40px) scale(0.85);
-      opacity: 0.2;
+    100% {
+      transform: scale(1) translateZ(0);
+      border-radius: 24px;
     }
   }
 
-  @keyframes float3 {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-      opacity: 0.4;
+  .morph-transform {
+    animation: morph-indicator 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* Efecto shimmer para eventos de jackpot - Trazo continuo */
+  @keyframes border-trail {
+    0% {
+      background-position: 0% 0%;
     }
-    20% {
-      transform: translate(60px, -30px) scale(1.2);
-      opacity: 0.6;
+    100% {
+      background-position: 400% 0%;
     }
-    40% {
-      transform: translate(20px, 40px) scale(0.8);
-      opacity: 0.2;
-    }
-    60% {
-      transform: translate(-40px, 20px) scale(1.1);
-      opacity: 0.5;
-    }
-    80% {
-      transform: translate(-20px, -50px) scale(0.9);
-      opacity: 0.3;
-    }
+  }
+
+  .jackpot-shimmer {
+    position: relative;
+  }
+
+  .jackpot-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      transparent 20%,
+      rgba(70, 252, 109, 0.3) 25%,
+      rgba(70, 252, 109, 0.8) 30%,
+      rgba(70, 252, 109, 1) 35%,
+      rgba(70, 252, 109, 0.8) 40%,
+      rgba(70, 252, 109, 0.3) 45%,
+      transparent 50%,
+      transparent 100%);
+    background-size: 400% 100%;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    padding: 1px;
+    animation: border-trail 4s infinite linear;
   }
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1a1a2e;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #00B7E3;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #0099cc;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-thumb { background: #00B7E3; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #0099cc; }
 
 html, body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #11181C 0%, #0d1117 100%);
